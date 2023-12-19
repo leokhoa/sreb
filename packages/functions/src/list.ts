@@ -8,7 +8,7 @@ export const main = handler(async (event) => {
 	  TableName: "prod-notes-Notes",
 	  KeyConditionExpression: "userId = :userId",
 	  ExpressionAttributeValues: {
-	    ":userId": "123",
+	    ":userId": event.requestContext.authorizer?.iam.cognitoIdentity.identityId,
 	  },
 	};
 
